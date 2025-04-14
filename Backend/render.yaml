@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: what2watch-backend
+    env: node
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: OMDB_API_KEY
+        value: fc1fef96
+      - key: YOUTUBE_API_KEY
+        value: AIzaSyClnpc0JIutqysqxDsFZT9kxnF6hmQE97M
+      - key: JIKAN_API_KEY
+        value: your_jikan_api_key_here 

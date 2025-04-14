@@ -14,6 +14,30 @@ app.use(cors({
 }));
 app.use(express.json());
 
+// Root route with API documentation
+app.get('/', (req, res) => {
+  res.json({
+    name: 'What2Watch Backend API',
+    version: '1.0.0',
+    endpoints: {
+      omdb: {
+        search: '/api/omdb/search?query={query}&type={type}',
+        details: '/api/omdb/details/:id'
+      },
+      youtube: {
+        search: '/api/youtube/search?query={query}',
+        video: '/api/youtube/video/:id'
+      },
+      jikan: {
+        topAnime: '/api/jikan/top/anime',
+        search: '/api/jikan/anime/search?query={query}',
+        details: '/api/jikan/anime/:id'
+      }
+    },
+    documentation: 'For more information, visit the GitHub repository'
+  });
+});
+
 // OMDB API Proxy Routes
 app.get('/api/omdb/search', async (req, res) => {
   try {
